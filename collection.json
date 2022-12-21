@@ -1,0 +1,370 @@
+{
+  "info": {
+    "name": "api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gigs.com",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ],
+    "type": "bearer"
+  },
+  "item": [
+    {
+      "name": "Devices",
+      "item": [
+        {
+          "name": "Retrieve a device model",
+          "request": {
+            "description": "Retrieves the details of an existing device model.",
+            "url": {
+              "raw": "{{baseUrl}}/deviceModels/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deviceModels",
+                ":id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "dmd_0SNlurA04OUskUGfGAn3Rh"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Retrieves the details of an existing device model.",
+                "url": {
+                  "raw": "{{baseUrl}}/deviceModels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceModels",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "dmd_0SNlurA04OUskUGfGAn3Rh"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns the device model object if it exists.",
+              "body": "{\n    \"object\": \"deviceModel\",\n    \"id\": \"dmd_0SNlurA04OUskUGfGAn3Rh\",\n    \"brand\": \"Apple\",\n    \"name\": \"iPhone 12 Pro\",\n    \"simTypes\": [\n        \"eSIM\"\n    ],\n    \"type\": \"smartphone\"\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "Does Not Exist",
+              "status": "Does Not Exist",
+              "code": 404,
+              "originalRequest": {
+                "description": "Retrieves the details of an existing device model.",
+                "url": {
+                  "raw": "{{baseUrl}}/deviceModels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceModels",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "myInvalidId"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns the device model object if it exists.",
+              "body": "{\n    \"object\": \"error\",\n    \"message\": \"Invalid ICCID format.\",\n    \"type\": \"invalid\"\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "Does Not Exist",
+              "status": "Does Not Exist",
+              "code": 404,
+              "originalRequest": {
+                "description": "Retrieves the details of an existing device model.",
+                "url": {
+                  "raw": "{{baseUrl}}/deviceModels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deviceModels",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "myInvalidId"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns the device model object if it exists.",
+              "body": "{\n    \"object\": \"error\",\n    \"code\": \"invalidICCID\",\n    \"details\": [\n        {\n            \"object\": \"commons.propertyErrorDetail\",\n            \"code\": \"propertyRequired\",\n            \"message\": \"Invalid value for property.\",\n            \"property\": \"property1\",\n            \"suggestion\": \"alternative_value\"\n        }\n    ],\n    \"documentation\": [\n        \"https://developers.gigs.com/docs/api/ZG9jOjExMTYzMDU0-error-handling\"\n    ],\n    \"hint\": \"Parameter iccid must match /^([0-9]{19}F?|[0-9]{20})$/i\",\n    \"message\": \"Invalid ICCID format.\",\n    \"type\": \"invalid\"\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Plans",
+      "item": [
+        {
+          "name": "Archive a plan",
+          "request": {
+            "description": "Set the status of a plan to archived. An archived plan can not be used to create new subscriptions.",
+            "url": {
+              "raw": "{{baseUrl}}/projects/:project/plans/:id/archive",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                ":project",
+                "plans",
+                ":id",
+                "archive"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "project",
+                  "description": "The unique identifier for the project.",
+                  "value": "gigs"
+                },
+                {
+                  "key": "id",
+                  "description": "The unique identifier for the plan.",
+                  "value": "pln_0SNlurA049MEWV3V0q7gjQbM4EVo"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Set the status of a plan to archived. An archived plan can not be used to create new subscriptions.",
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:project/plans/:id/archive",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":project",
+                    "plans",
+                    ":id",
+                    "archive"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "project",
+                      "description": "The unique identifier for the project.",
+                      "value": "gigs"
+                    },
+                    {
+                      "key": "id",
+                      "description": "The unique identifier for the plan.",
+                      "value": "pln_0SNlurA049MEWV3V0q7gjQbM4EVo"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns the archived plan.",
+              "body": "{\n    \"object\": \"plan\",\n    \"id\": \"pln_0SNlurA049MEWV3V0q7gjQbM4EVo\"\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "Retrieve a project",
+          "request": {
+            "description": "Retrieves the details of an existing project accessible by the API client.",
+            "url": {
+              "raw": "{{baseUrl}}/projects/:project",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                ":project"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "project",
+                  "description": "The unique identifier for the project.",
+                  "value": "gigs"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Retrieves the details of an existing project accessible by the API client.",
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:project",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":project"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "project",
+                      "description": "The unique identifier for the project.",
+                      "value": "gigs"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns the project object if it exists.",
+              "body": "{\n    \"object\": \"project\",\n    \"id\": \"gigs\",\n    \"legal\": {\n        \"name\": \"Gigs Inc.\",\n        \"city\": \"New York City\",\n        \"country\": \"US\",\n        \"line1\": \"129 West 81st Street\",\n        \"line2\": \"Apartment 5A\",\n        \"postalCode\": \"10024\",\n        \"state\": \"NY\"\n    },\n    \"locales\": [\n        \"en-US\"\n    ],\n    \"name\": \"Gigs Connect\",\n    \"organization\": {\n        \"object\": \"organization\",\n        \"id\": \"org_0SNlurA04kOdemVEMVZQBF\",\n        \"name\": \"Gigs\",\n        \"createdAt\": \"2021-02-01T13:21:30Z\"\n    },\n    \"payments\": {\n        \"currency\": \"USD\",\n        \"mode\": \"live\"\n    },\n    \"subscriptionOwner\": \"company\",\n    \"support\": {\n        \"email\": \"support@gigs.com\",\n        \"phoneNumber\": \"+12345678900\"\n    },\n    \"createdAt\": \"2021-01-21T19:32:13Z\"\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "List all subscriptions",
+          "request": {
+            "description": "Returns a list of subscriptions. The subscriptions returned are sorted by creation date, with the most recently created subscriptions appearing first.",
+            "url": {
+              "raw": "{{baseUrl}}/projects/{project}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                "{project}",
+                "subscriptions"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "project",
+                  "description": "The unique identifier for the project.",
+                  "value": "gigs"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Returns a list of subscriptions. The subscriptions returned are sorted by creation date, with the most recently created subscriptions appearing first.",
+                "url": {
+                  "raw": "{{baseUrl}}/projects/{project}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{project}",
+                    "subscriptions"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "project",
+                      "description": "The unique identifier for the project.",
+                      "value": "gigs"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "description": "Returns a list of subscriptions. The subscriptions returned are sorted by creation date, with the most recently created subscriptions appearing first.",
+              "body": "{\n    \"object\": \"list\",\n    \"items\": [\n        {\n            \"object\": \"subscription\",\n            \"id\": \"sub_0SNlurA049MEWV2gSfSxi00xlPIi\",\n            \"currentPeriod\": {\n                \"number\": 1,\n                \"start\": \"2021-01-21T19:32:13Z\",\n                \"end\": \"2021-02-20T19:38:34Z\"\n            },\n            \"phoneNumber\": \"+25411865216434\",\n            \"plan\": \"pln_0SNlurA049MEWV3V0q7gjQbM4EVo\",\n            \"porting\": \"prt_0SNlurA049MEWV39s2kSYqaat7ZS\",\n            \"sim\": \"sim_0SNlurA049MEWV1BAAmWZULA4lf6\",\n            \"status\": \"pending\",\n            \"user\": \"usr_0SNlurA049MEWV4OpCwsNyC9Kn2d\",\n            \"activatedAt\": \"2021-01-21T19:38:34Z\",\n            \"canceledAt\": \"2021-01-29T13:22:51Z\",\n            \"createdAt\": \"2021-01-21T19:32:13Z\",\n            \"endedAt\": \"2021-02-20T19:38:34Z\",\n            \"firstUsageAt\": \"2021-01-21T19:38:34Z\"\n        }\n    ],\n    \"moreItemsAfter\": null,\n    \"moreItemsBefore\": null\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    }
+  ]
+}
